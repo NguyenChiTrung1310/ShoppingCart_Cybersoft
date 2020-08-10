@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display-4 text-center">Mua Hàng Online</h1>
+        <a class="text-right" href="./admin.html">
+            <h1>Admin</h1>
+        </a>
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <label for="" class="">Sắp sếp</label>
+                <select name="" id="sort" onchange="sortProduct()">
+                    <option value="">---Sắp sếp---</option>
+                    <option value="0">A-Z</option>
+                    <option value="1">Z-A</option>
+                </select>
+            </div>
+            <div class="col-md-6 text-left">
+                <label for="" class="">Lọc</label>
+                <select name="" id="filterProduct" onchange="searchProduct()">
+                    <option value="">--Lọc--</option>
+                    <option value="iphone">Apple</option>
+                    <option value="Samsung">SamSung</option>
+                </select>
+            </div>
+        </div>
+        <div id="tbody" class="row">
+
+            <!-- end product1 -->
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <h1 class="display-4">Giỏ Hàng</h1>
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hình Ảnh</th>
+                            <th>Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng Cộng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblCart">
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-size: 24px;" class="font-weight-bold">
+                                Tổng Tiền
+                            </td>
+                            <td style="font-size: 24px;" class="font-weight-bold" id="totalPrice"></td>
+                            <td>
+                                <button style="font-size: 20px;" class="btn btn-info" onclick="purchaseCart()">
+                                    Thanh Toán
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="./js/list.js"></script>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

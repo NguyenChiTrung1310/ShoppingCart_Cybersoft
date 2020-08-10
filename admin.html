@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/animate.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <div class="container" style="margin-bottom: 30px;">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-6 center wow fadeInUp">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Quản lý sản phẩm</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" id="frmProd">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" name="tenSP" id="tenSP"
+                                                class="form-control input-sm floatlabel" placeholder="Tên sản phẩm" />
+                                            <span id="sp-tenSP" class="sp-thongbao"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="anhSP">
+                                        <option>Chọn ảnh</option>
+                                        <option>
+                                            https://vignette.wikia.nocookie.net/powerrangers/images/e/ed/Prwf-ar-growlphone.jpg/revision/latest?cb=20170702141218
+                                        </option>
+                                        <option>
+                                            https://vignette.wikia.nocookie.net/powerrangers/images/c/cc/Wildforce-arsenal-lunarcaller.png/revision/latest?cb=20190814033336
+                                        </option>
+                                        <option>https://images-na.ssl-images-amazon.com/images/I/41urxRUvU3L._AC_.jpg
+                                        </option>
+                                    </select>
+                                    <span class="sp-thongbao"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="maSP" id="maSP" class="form-control input-sm"
+                                        placeholder="Mã sản phẩm" />
+                                    <span id="sp-maSP" class="sp-thongbao"></span>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="loaiSP">
+                                        <option>Chọn loại</option>
+                                        <option>Samsung</option>
+                                        <option>Iphone</option>
+                                        <option>Others</option>
+                                    </select>
+                                    <span class="sp-thongbao"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <textarea id="motaSP" class="form-control input-sm floatlabel"
+                                                placeholder="Mô tả sản phẩm"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="gia" id="gia"
+                                                class="form-control input-sm floatlabel" placeholder="Giá">
+                                            <span class="sp-thongbao"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="soluong" id="soluong" class="form-control input-sm"
+                                                placeholder="Số lượng">
+                                            <span class="sp-thongbao"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="danhgia" id="danhgia" class="form-control input-sm"
+                                                placeholder="Đánh giá">
+                                            <span class="sp-thongbao"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input id="btnAdd" type="button" value="Thêm Sản phẩm" class="btn btn-info btn-block"
+                                    onclick="addProd();" />
+                                <input id="btnUpdate" style="display: none" type="button" value="Cập Nhật Sản Phẩm"
+                                    class="btn btn-info btn-block" onclick="updateProd();" />
+                                <input id="btnCancle" style="display: none" type="button" value="Cancle"
+                                    class="btn btn-danger btn-block" onclick="cancle();" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="hienthi" class="container">
+        <table class="table text-black">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Hình Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Loại</th>
+                    <th>Mô tả</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Đánh giá</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyProd">
+                <!-- <tr>
+                    <td>1</td>
+                    <td><img src="./img/201808100934091115_mg-6364-1.jpg" style="height: 100px;"></td>
+                    <td>Iphone22</td>
+                    <td>ip1</td>
+                    <td>iphone</td>
+                    <td>iphoneeeeeeee</td>
+                    <td>8000$</td>
+                    <td>8000$</td>
+                    <td>8000$</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+    <script src="./js/list.js"></script>
+    <script src="./js/admin.js"></script>
+    <!-- <script type="text/javascript" src="./js/main.js"></script> -->
+
+    <script src="WOW-master/dist/wow.min.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                showOn: "button",
+                buttonImage: "images/calendar.png",
+                buttonImageOnly: true,
+                buttonText: "Select date",
+                dateFormat: "mm/dd/yy"
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var d = new Date();
+
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+
+            var output =
+                (("" + month).length < 2 ? "0" : "") +
+                month +
+                "/" +
+                (("" + day).length < 2 ? "0" : "") +
+                day +
+                "/" +
+                d.getFullYear();
+            $("#datepicker").val(output);
+        });
+    </script>
+</body>
+
+</html>
